@@ -1,0 +1,19 @@
+{
+  "name": "modern-todo-workspace",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "packageManager": "pnpm@10.6.2",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace=@todo/api\" \"npm run dev --workspace=@todo/web\"",
+    "build": "npm run build --workspaces",
+    "lint": "npm run lint --workspaces",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "prettier": "^3.5.3"
+  }
+}
