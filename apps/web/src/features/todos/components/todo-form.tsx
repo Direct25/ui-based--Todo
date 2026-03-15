@@ -1,14 +1,21 @@
 import { useState, useTransition } from 'react';
-import { LoaderCircle, Plus } from 'lucide-react';
+import { ChevronDown, LoaderCircle, Plus } from 'lucide-react';
 
 import { fromDateInputValue } from '@/lib/utils';
 
 import { useTodoMutations } from '../hooks/use-todo-mutations';
 
-const initialForm = {
+type TodoFormState = {
+  title: string;
+  description: string;
+  priority: 'low' | 'medium' | 'high';
+  dueDate: string;
+};
+
+const initialForm: TodoFormState = {
   title: '',
   description: '',
-  priority: 'medium' as const,
+  priority: 'medium',
   dueDate: '',
 };
 
@@ -69,20 +76,23 @@ export function TodoForm() {
       <div className="flex flex-col gap-4">
         <div>
           <label className="mb-2 block text-sm font-medium">Priority</label>
-          <select
-            className="w-full rounded-2xl border border-ink/10 bg-white px-4 py-3 outline-none transition focus:border-coral"
-            value={form.priority}
-            onChange={(event) =>
-              setForm((current) => ({
-                ...current,
-                priority: event.target.value as 'low' | 'medium' | 'high',
-              }))
-            }
-          >
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
-          </select>
+          <label className="relative block">
+            <select
+              className="w-full appearance-none rounded-2xl border border-ink/10 bg-white px-4 py-3 pr-11 outline-none transition focus:border-coral"
+              value={form.priority}
+              onChange={(event) =>
+                setForm((current) => ({
+                  ...current,
+                  priority: event.target.value as 'low' | 'medium' | 'high',
+                }))
+              }
+            >
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+            <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-ink/50" />
+          </label>
         </div>
         <div>
           <label className="mb-2 block text-sm font-medium">Due date</label>

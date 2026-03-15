@@ -1,4 +1,4 @@
-import { ArrowDownUp, RotateCcw, Search, Trash2 } from 'lucide-react';
+import { ArrowDownUp, ChevronDown, RotateCcw, Search, Trash2 } from 'lucide-react';
 
 import { useTodoMutations } from '../hooks/use-todo-mutations';
 import { useTodoFiltersStore } from '../store/todo-filters-store';
@@ -34,38 +34,47 @@ export function TodoToolbar({ completedCount }: TodoToolbarProps) {
             onChange={(event) => setSearch(event.target.value)}
           />
         </label>
-        <select
-          className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm outline-none transition focus:border-coral"
-          value={status}
-          onChange={(event) => setStatus(event.target.value as 'all' | 'active' | 'completed')}
-        >
-          <option value="all">All status</option>
-          <option value="active">Active</option>
-          <option value="completed">Completed</option>
-        </select>
-        <select
-          className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm outline-none transition focus:border-coral"
-          value={priority}
-          onChange={(event) =>
-            setPriority(event.target.value as 'all' | 'low' | 'medium' | 'high')
-          }
-        >
-          <option value="all">All priority</option>
-          <option value="high">High</option>
-          <option value="medium">Medium</option>
-          <option value="low">Low</option>
-        </select>
-        <select
-          className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm outline-none transition focus:border-coral"
-          value={sortBy}
-          onChange={(event) =>
-            setSortBy(event.target.value as 'createdAt' | 'dueDate' | 'priority')
-          }
-        >
-          <option value="createdAt">Newest</option>
-          <option value="dueDate">Due date</option>
-          <option value="priority">Priority</option>
-        </select>
+        <label className="relative block">
+          <select
+            className="w-full appearance-none rounded-2xl border border-white/10 bg-white/5 px-4 py-3 pr-11 text-sm text-white outline-none transition focus:border-coral"
+            value={status}
+            onChange={(event) => setStatus(event.target.value as 'all' | 'active' | 'completed')}
+          >
+            <option value="all">All status</option>
+            <option value="active">Active</option>
+            <option value="completed">Completed</option>
+          </select>
+          <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-sand/70" />
+        </label>
+        <label className="relative block">
+          <select
+            className="w-full appearance-none rounded-2xl border border-white/10 bg-white/5 px-4 py-3 pr-11 text-sm text-white outline-none transition focus:border-coral"
+            value={priority}
+            onChange={(event) =>
+              setPriority(event.target.value as 'all' | 'low' | 'medium' | 'high')
+            }
+          >
+            <option value="all">All priority</option>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select>
+          <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-sand/70" />
+        </label>
+        <label className="relative block">
+          <select
+            className="w-full appearance-none rounded-2xl border border-white/10 bg-white/5 px-4 py-3 pr-11 text-sm text-white outline-none transition focus:border-coral"
+            value={sortBy}
+            onChange={(event) =>
+              setSortBy(event.target.value as 'createdAt' | 'dueDate' | 'priority')
+            }
+          >
+            <option value="createdAt">Newest</option>
+            <option value="dueDate">Due date</option>
+            <option value="priority">Priority</option>
+          </select>
+          <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-sand/70" />
+        </label>
         <div className="flex gap-2">
           <button
             type="button"
