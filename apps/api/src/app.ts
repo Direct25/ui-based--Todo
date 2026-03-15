@@ -1,9 +1,9 @@
 import cors from 'cors';
 import express from 'express';
 
-import { config } from './config';
-import { todoRouter } from './features/todos/todo.routes';
-import { HttpError } from './lib/http-error';
+import { config } from './config.js';
+import { todoRouter } from './features/todos/todo.routes.js';
+import { HttpError } from './lib/http-error.js';
 
 export function createApp() {
   const app = express();
@@ -11,6 +11,11 @@ export function createApp() {
   app.use(
     cors({
       origin: (origin, callback) => {
+        if (config.appOrigins.length === 0) {
+          callback(null, true);
+          return;
+        }
+
         if (!origin || config.appOrigins.includes(origin)) {
           callback(null, true);
           return;

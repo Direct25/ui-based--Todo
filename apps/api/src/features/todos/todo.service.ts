@@ -2,8 +2,8 @@ import { nanoid } from 'nanoid';
 
 import type { CreateTodoInput, Todo, TodoQuery, UpdateTodoInput } from '@todo/shared';
 
-import { HttpError } from '../../lib/http-error';
-import { todoRepository } from './todo.repository';
+import { HttpError } from '../../lib/http-error.js';
+import { todoRepository } from './todo.repository.js';
 
 const priorityRank = {
   low: 1,

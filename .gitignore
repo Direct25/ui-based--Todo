@@ -16,3 +16,5 @@ yarn-error.log*
 .vercel
 *.tsbuildinfo
 apps/api/data/*.local.json
+
+.vercel

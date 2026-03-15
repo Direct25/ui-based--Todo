@@ -9,7 +9,7 @@
     "lint": "tsc --noEmit -p tsconfig.json"
   },
   "dependencies": {
-    "@todo/shared": "0.0.0",
+    "@todo/shared": "workspace:*",
     "cors": "^2.8.5",
     "express": "^4.21.2",
     "nanoid": "^5.1.5",
